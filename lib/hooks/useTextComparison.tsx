@@ -15,7 +15,7 @@ export const useTextComparison = (text1: string, text2: string) => {
       if (word1 === word2) {
         // Words are the same, mark them as common (gray text)
         result.push(
-          <span key={`common-${i}`} className="text-gray-300">
+          <span key={`common-${i}`} style={{color: "gray"}}>
             {word1}
           </span>
         );
@@ -26,7 +26,7 @@ export const useTextComparison = (text1: string, text2: string) => {
         // Word in text1 is not in text2, mark as removed (red text)
         if (i < words1.length) {
           result.push(
-            <span key={`removed-${i}`} className="text-red-500">
+            <span key={`removed-${i}`} style={{color: "red"}}>
               {word1}
             </span>
           );
@@ -36,7 +36,7 @@ export const useTextComparison = (text1: string, text2: string) => {
         // Word in text2 is not in text1, mark as added (green text)
         if (j < words2.length) {
           result.push(
-            <span key={`added-${j}`} className="text-green-500">
+            <span key={`added-${j}`} style={{color: "green"}}>
               {word2}
             </span>
           );
