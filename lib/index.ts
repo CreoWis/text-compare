@@ -1,4 +1,7 @@
 
-import { useTextComparison } from "./hooks/useTextComparison";
+import "./index.css";
 
-export { useTextComparison };
+import { useTextComparison } from "./hooks/useTextComparison";
+import Compare from "./components/Compare";
+
+export { useTextComparison, Compare };
