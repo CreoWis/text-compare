@@ -29,8 +29,15 @@
   
 ## Basic Usage 🚀
 
-Here's a quick example to get you started:
+### Install the Package
+First, install the `text-compare` package using **npm or yarn**:
 
+```bash
+npm install text-compare
+# or
+yarn add text-compare
+```
+After installing, here's a quick example to get you started:
 ```js
 import { useTextComparison } from 'text-compare';
 
