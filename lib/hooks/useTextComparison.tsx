@@ -4,15 +4,23 @@ interface ComparisonColors {
   addedColor?: string;
 }
 
+interface ComparisonOptions {
+  customColors?: ComparisonColors;
+}
+
 export const useTextComparison = (
-  text1: string = '', 
+  text1: string = '',
   text2: string = '',
-  {
-    commonColor = 'gray',
-    removedColor = 'red',
-    addedColor = 'green',
-  }: ComparisonColors = {}
+  options: ComparisonOptions = {}
 ) => {
+  const {
+    customColors = {
+      commonColor: 'gray',
+      removedColor: 'red',
+      addedColor: 'green',
+    },
+  } = options;
+
   const compareTexts = (t1: string, t2: string) => {
     // Check for undefined or null values and handle them
     if (!t1 || !t2) {
@@ -38,10 +46,10 @@ export const useTextComparison = (
       if (word1 === word2) {
         // Words are the same, mark them as common (custom or default color)
         result.push(
-          <span key={`common-${i}`} style={{ color: commonColor }}>
-            {word1}
-          </span>
-        );
+            <span key={`common-${i}`} style={{ color: customColors.commonColor }}>
+              {word1}
+            </span>
+          );
         matches++; // Count this as a match for similarity
         i++;
         j++;
@@ -49,7 +57,7 @@ export const useTextComparison = (
         // Word in text1 is not in text2, mark as removed (custom or default color)
         if (i < words1.length) {
           result.push(
-            <span key={`removed-${i}`} style={{ color: removedColor }}>
+            <span key={`removed-${i}`} style={{ color: customColors.removedColor }}>
               {word1}
             </span>
           );
@@ -59,7 +67,7 @@ export const useTextComparison = (
         // Word in text2 is not in text1, mark as added (custom or default color)
         if (j < words2.length) {
           result.push(
-            <span key={`added-${j}`} style={{ color: addedColor }}>
+            <span key={`added-${j}`} style={{ color: customColors.addedColor }}>
               {word2}
             </span>
           );
@@ -67,7 +75,7 @@ export const useTextComparison = (
         }
       }
     }
-
+    
     // Return comparison result as well as similarity percentage
     const totalWords = Math.max(words1.length, words2.length);
     const similarity = (matches / totalWords) * 100; // Similarity percentage

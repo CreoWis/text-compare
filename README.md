@@ -31,14 +31,16 @@ const TextDiffer = () => {
     addedColor: '#32CD32',     // LimeGreen for added words
   };
 
-  // Pass custom colors to the hook
-  const { comparisonResult, similarity } = useTextComparison(text1, text2, customColors);
+  // Pass custom colors when using the hook
+  const { comparisonResult, similarity } = useTextComparison(text1, text2, {
+    customColors,
+  });
 
   return (
-    <div>
-      <div className='comparison'>{comparisonResult}</div>
+    <>
+      <div className='flex gap-1 mb-4'>{comparisonResult}</div>
       <div>Similarity: {similarity.toFixed(2)}%</div>
-    </div>
+    </>
   );
 };
 
