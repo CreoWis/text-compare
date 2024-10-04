@@ -5,8 +5,8 @@ interface ComparisonColors {
 }
 
 export const useTextComparison = (
-  text1: string,
-  text2: string,
+  text1: string = '', 
+  text2: string = '',
   {
     commonColor = 'gray',
     removedColor = 'red',
@@ -14,8 +14,17 @@ export const useTextComparison = (
   }: ComparisonColors = {}
 ) => {
   const compareTexts = (t1: string, t2: string) => {
-    const words1 = t1.split(' ');
-    const words2 = t2.split(' ');
+    // Check for undefined or null values and handle them
+    if (!t1 || !t2) {
+      return {
+        comparisonResult: [],
+        similarity: 0,
+      };
+    }
+
+    // regex to split by whitespace (including multiple spaces)
+    const words1 = t1.split(/\s+/);
+    const words2 = t2.split(/\s+/);
 
     const result: JSX.Element[] = [];
     let matches = 0;
