@@ -26,6 +26,7 @@
 - 🎨 Customizable highlighting colors
 - 📊 Similarity percentage calculation
 - 🔧 Easy to integrate
+  
 ## 🚀 Getting Started Guide
 
 Follow the steps below to set up and work with the `text-compare` project.
