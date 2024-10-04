@@ -1,4 +1,18 @@
-export const useTextComparison = (text1: string, text2: string) => {
+interface ComparisonColors {
+  commonColor?: string;
+  removedColor?: string;
+  addedColor?: string;
+}
+
+export const useTextComparison = (
+  text1: string,
+  text2: string,
+  {
+    commonColor = 'gray',
+    removedColor = 'red',
+    addedColor = 'green',
+  }: ComparisonColors = {}
+) => {
   const compareTexts = (t1: string, t2: string) => {
     const words1 = t1.split(' ');
     const words2 = t2.split(' ');
@@ -13,9 +27,9 @@ export const useTextComparison = (text1: string, text2: string) => {
       const word2 = words2[j];
 
       if (word1 === word2) {
-        // Words are the same, mark them as common (gray text)
+        // Words are the same, mark them as common (custom or default color)
         result.push(
-          <span key={`common-${i}`} style={{color: "gray"}}>
+          <span key={`common-${i}`} style={{ color: commonColor }}>
             {word1}
           </span>
         );
@@ -23,20 +37,20 @@ export const useTextComparison = (text1: string, text2: string) => {
         i++;
         j++;
       } else {
-        // Word in text1 is not in text2, mark as removed (red text)
+        // Word in text1 is not in text2, mark as removed (custom or default color)
         if (i < words1.length) {
           result.push(
-            <span key={`removed-${i}`} style={{color: "red"}}>
+            <span key={`removed-${i}`} style={{ color: removedColor }}>
               {word1}
             </span>
           );
           i++;
         }
 
-        // Word in text2 is not in text1, mark as added (green text)
+        // Word in text2 is not in text1, mark as added (custom or default color)
         if (j < words2.length) {
           result.push(
-            <span key={`added-${j}`} style={{color: "green"}}>
+            <span key={`added-${j}`} style={{ color: addedColor }}>
               {word2}
             </span>
           );
