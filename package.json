@@ -1,6 +1,27 @@
 {
   "name": "text-compare",
   "version": "0.0.1",
+  "description": "A tool for comparing text content efficiently.",
+  "keywords": [
+    "text",
+    "comparison",
+    "diff",
+    "react",
+    "typescript"
+  ],
+  "author": {
+    "name": "CreoWis",
+    "email": "hello@creowis.com",
+    "url": "https://www.creowis.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CreoWis/text-compare"
+  },
+  "bugs": {
+    "url": "https://github.com/CreoWis/text-compare/issues"
+  },
+  "license": "MIT",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",

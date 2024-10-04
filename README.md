@@ -27,6 +27,59 @@
 - 📊 Similarity percentage calculation
 - 🔧 Easy to integrate
   
+## Basic Usage 🚀
+
+### Install the Package
+First, install the `text-compare` package using **npm or yarn**:
+
+```bash
+npm install text-compare
+# or
+yarn add text-compare
+```
+After installing, here's a quick example to get you started:
+```js
+import { useTextComparison } from 'text-compare';
+
+const TextDiffer = () => {
+  const text1 = 'The quick brown fox jumps over the lazy dog';
+  const text2 = 'The quick blue fox leaps over the happy dog';
+
+  const { comparisonResult, similarity } = useTextComparison(text1, text2);
+
+  return (
+    <>
+      <div className="flex gap-1 mb-4">{comparisonResult}</div>
+      <div>Similarity: {similarity.toFixed(2)}%</div>
+    </>
+  );
+};
+```
+
+## 🛠️ Advanced Usage 
+
+### Customization Options
+
+The `useTextComparison` hook accepts an options object for customization:
+
+```jsx
+const options = {
+  customColors: {
+    commonColor: '#1E90FF',    // DodgerBlue for common words
+    removedColor: '#FF6347',   // TomatoRed for removed words
+    addedColor: '#32CD32',     // LimeGreen for added words
+  }
+};
+
+const { comparisonResult, similarity } = useTextComparison(text1, text2, options);
+```
+
+### Available Options
+
+| Option | Type | Description |
+|--------|---------|-------------|
+| `customColors` | object | An object containing color configurations for text highlighting. Properties: `commonColor` (for matching words), `removedColor` (for removed words), `addedColor` (for added words) |
+
 ## 🚀 Getting Started Guide
 
 Follow the steps below to set up and work with the `text-compare` project.
@@ -91,53 +144,6 @@ npm run dev
 # or
 npm start
 ```
-
-## Basic Usage 🚀
-
-Here's a quick example to get you started:
-
-```js
-import { useTextComparison } from 'text-compare';
-
-const TextDiffer = () => {
-  const text1 = 'The quick brown fox jumps over the lazy dog';
-  const text2 = 'The quick blue fox leaps over the happy dog';
-
-  const { comparisonResult, similarity } = useTextComparison(text1, text2);
-
-  return (
-    <>
-      <div className="flex gap-1 mb-4">{comparisonResult}</div>
-      <div>Similarity: {similarity.toFixed(2)}%</div>
-    </>
-  );
-};
-```
-
-## 🛠️ Advanced Usage 
-
-### Customization Options
-
-The `useTextComparison` hook accepts an options object for customization:
-
-```jsx
-const options = {
-  customColors: {
-    commonColor: '#1E90FF',    // DodgerBlue for common words
-    removedColor: '#FF6347',   // TomatoRed for removed words
-    addedColor: '#32CD32',     // LimeGreen for added words
-  }
-};
-
-const { comparisonResult, similarity } = useTextComparison(text1, text2, options);
-```
-
-### Available Options
-
-| Option | Type | Description |
-|--------|---------|-------------|
-| `customColors` | object | An object containing color configurations for text highlighting. Properties: `commonColor` (for matching words), `removedColor` (for removed words), `addedColor` (for added words) |
-
 
 ## Contributing 🤝
 
