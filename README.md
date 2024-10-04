@@ -26,23 +26,75 @@
 - 🎨 Customizable highlighting colors
 - 📊 Similarity percentage calculation
 - 🔧 Easy to integrate
+## 🚀 Getting Started Guide
+
+Follow the steps below to set up and work with the `text-compare` project.
+
+### 1. Clone the Repository
+  
+First, clone the repository to your local machine and navigate to the project directory:
+
+```bash
+git clone https://github.com/CreoWis/text-compare.git
+cd text-compare
+```
+### 2. Install pnpm (if you don't have it installed):
+
+If you don't have pnpm installed, you can install it globally using the following command:
+
+```bash
+npm install -g pnpm
+```
+### 3. Install Dependencies
+
+Navigate to the project directory and install the dependencies using:
+```bash
+pnpm install
+```
+
+### 4. Testing New Features Locally
+If you have added new features and want to test them locally after making changes, follow these steps
+
+a. **Build the Project**: Compile the latest changes:
+```bash
+npm run build
+```
+
+b. **Create a Tarball**: Generate a `.tgz` file for the updated package:
+```bash
+npm pack
+```
+c. **Copy the Tarball**: Copy the generated `.tgz` file from the project root directory.
+
+d. **Add the `.tgz` File to Your Frontend Project**: Place the .tgz file in the root directory of your frontend project.
+
+e. **Update package.json**: In the dependencies section of your `package.json` file, add a reference to the `.tgz file`.
+For example:
+```js
+"dependencies": {
+  "next": "^14.1.0",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "text-compare": "file:text-compare-0.0.1.tgz"
+}
+```
+f. **Install Dependencies in the Frontend Project**:Run the following command to install the updated package:
+
+```bash
+npm install
+```
+g. **Start the Frontend Project**: Finally, start your development server:
+
+```bash
+npm run dev
+# or
+npm start
+```
 
 ## Basic Usage 🚀
 
 Here's a quick example to get you started:
 
-### To Use Components
-```js
-import 'text-compare/dist/style.css';
-import { Compare } from "text-compare";
-
-export const CompareText = () => {
-  return(
-    <Compare/>
-  )
-}
-```
-### To use `useTextComparison` hook
 ```js
 import { useTextComparison } from 'text-compare';
 
@@ -61,31 +113,30 @@ const TextDiffer = () => {
 };
 ```
 
-## Advanced Usage 🔧
+## 🛠️ Advanced Usage 
 
-### Customizing Colors
+### Customization Options
 
-The `useTextComparison` hook accepts custom colors for highlighting differences:
+The `useTextComparison` hook accepts an options object for customization:
 
 ```jsx
-const customColors = {
-  commonColor: '#1E90FF',    // DodgerBlue for common words
-  removedColor: '#FF6347',   // TomatoRed for removed words
-  addedColor: '#32CD32',     // LimeGreen for added words
+const options = {
+  customColors: {
+    commonColor: '#1E90FF',    // DodgerBlue for common words
+    removedColor: '#FF6347',   // TomatoRed for removed words
+    addedColor: '#32CD32',     // LimeGreen for added words
+  }
 };
 
-const { comparisonResult, similarity } = useTextComparison(text1, text2, {
-  customColors,
-});
+const { comparisonResult, similarity } = useTextComparison(text1, text2, options);
 ```
 
 ### Available Options
 
-| Option | Default | Description |
+| Option | Type | Description |
 |--------|---------|-------------|
-| `commonColor` | "gray" | Color for words that appear in both texts |
-| `removedColor` | "red" | Color for words that only appear in the first text |
-| `addedColor` | "green" | Color for words that only appear in the second text |
+| `customColors` | object | An object containing color configurations for text highlighting. Properties: `commonColor` (for matching words), `removedColor` (for removed words), `addedColor` (for added words) |
+
 
 ## Contributing 🤝
 
