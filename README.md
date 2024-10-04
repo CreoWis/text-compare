@@ -45,6 +45,9 @@ const TextDiffer = () => {
 export default TextDiffer;
 
 ```
+### Output:
+
+![alt text](/lib/assets/custom_color.png)
 
 ## Available Customization Options
 When using the useTextComparison hook, you can pass an optional object to customize the colors:
